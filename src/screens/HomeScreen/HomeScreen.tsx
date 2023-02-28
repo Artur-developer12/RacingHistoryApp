@@ -1,10 +1,16 @@
-import { View, Text } from 'react-native'
+import { Text } from 'react-native'
 import React from 'react'
+import styled from '@emotion/native'
+
+const Wrapper = styled.View`
+  flex: 1;
+  background-color: gray;
+`
 
 const HomeScreen = () => (
-  <View style={{ flex: 1 }}>
+  <Wrapper>
     <Text>HomeScreen</Text>
-  </View>
+  </Wrapper>
 )
 
 export default HomeScreen
