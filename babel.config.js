@@ -19,6 +19,7 @@ module.exports = {
           components: './src/components',
           assets: './src/assets',
           lib: './src/lib',
+          clients: './src/clients',
         },
       },
     ],
