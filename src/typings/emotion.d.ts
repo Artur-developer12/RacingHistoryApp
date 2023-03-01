@@ -6,8 +6,12 @@ declare module '@emotion/react' {
       common: {
         white: string
         whiteTransparent: string
+        link: string
         black: string
         blackTransparent: string
+      }
+      background: {
+        gray: string
       }
     }
   }

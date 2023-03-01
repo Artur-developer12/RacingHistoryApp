@@ -11,7 +11,6 @@ export interface FetchDriversResponce {
     }
   }
 }
-
 export interface DriversType {
   driverId: string
   url: string

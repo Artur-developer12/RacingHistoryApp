@@ -1,20 +1,29 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getDrivers } from 'clients/ergastApiClient'
 import { DriversType, FetchDriversResponce } from 'clients/ergastApiClient/types'
+import { RequestFilterType } from 'types'
 
 interface MainState {
   drivers: DriversType[]
+  offset: number
 }
 
 const initialState: MainState = {
   drivers: [],
+  offset: 0,
 }
 
-export const fetchDrivers = createAsyncThunk<FetchDriversResponce, undefined>('main/fetchDrivers', async () => {
-  const data = await getDrivers()
+export const fetchDrivers = createAsyncThunk<{ driversData: FetchDriversResponce; offset: number }, RequestFilterType>(
+  'main/fetchDrivers',
+  async ({ offset }) => {
+    const data = await getDrivers({ offset })
 
-  return data
-})
+    return {
+      driversData: data,
+      offset,
+    }
+  },
+)
 
 const index = createSlice({
   name: 'main',
@@ -22,9 +31,18 @@ const index = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchDrivers.fulfilled, (state, action) => {
-      const { MRData } = action.payload
+      const { driversData, offset } = action.payload
 
-      state.drivers = MRData.DriverTable.Drivers
+      if (offset === 0) {
+        state.drivers = driversData.MRData.DriverTable.Drivers
+        state.offset = offset
+
+        return
+      }
+      if (state.offset !== offset) {
+        state.drivers = [...state.drivers, ...driversData.MRData.DriverTable.Drivers]
+        state.offset = offset
+      }
     })
   },
 })
