@@ -21,7 +21,7 @@ const DriverItem: FC<Props> = ({ item }) => {
   const navigation = useAppNavigation()
 
   const handlePress = () => {
-    navigation.navigate(StackRouteNames.DRIVER, { item, title: item.givenName })
+    navigation.navigate(StackRouteNames.DRIVER, { item })
   }
   return (
     <Wrapper
