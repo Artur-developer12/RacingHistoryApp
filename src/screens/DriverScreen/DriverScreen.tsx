@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Linking, TouchableOpacity } from 'react-native'
 import styled from '@emotion/native'
 import { StackNavProp, StackRouteNames } from 'types'
@@ -22,8 +22,14 @@ const Text = styled.Text<{ isLink?: boolean }>`
   color: ${({ theme, isLink }) => (isLink ? theme.colors.common.link : theme.colors.common.black)};
 `
 
-const DriverScreen = ({ route }: StackNavProp<StackRouteNames.DRIVER>) => {
+const DriverScreen = ({ route, navigation }: StackNavProp<StackRouteNames.DRIVER>) => {
   const { item } = route.params
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: `${item.givenName} ${item.familyName}`,
+    })
+  }, [])
 
   const handleLink = () => {
     Linking.openURL(item.url)

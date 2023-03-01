@@ -11,13 +11,7 @@ const Routes = () => (
   <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen name={StackRouteNames.HOME} component={HomeScreen} />
-      <Stack.Screen
-        name={StackRouteNames.DRIVER}
-        component={DriverScreen}
-        options={({ route }) => ({
-          title: route.params?.title,
-        })}
-      />
+      <Stack.Screen name={StackRouteNames.DRIVER} component={DriverScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 )

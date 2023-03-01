@@ -8,7 +8,7 @@ export enum StackRouteNames {
 
 export interface StackParamList {
   [StackRouteNames.HOME]: undefined
-  [StackRouteNames.DRIVER]: { item: DriversType; title: string }
+  [StackRouteNames.DRIVER]: { item: DriversType }
   [key: string]: any
 }
 
