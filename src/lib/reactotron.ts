@@ -6,7 +6,7 @@ import Reactotron, { ReactotronReactNative } from 'reactotron-react-native'
 import { Reactotron as ReactotronType } from 'reactotron-core-client'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { reactotronRedux } from 'reactotron-redux'
-import { store } from 'strore'
+import { store } from 'store'
 
 
 let reactotron: (ReactotronType<ReactotronReactNative> & ReactotronReactNative) | undefined

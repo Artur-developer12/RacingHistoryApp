@@ -13,6 +13,7 @@ module.exports = {
         ],
         alias: {
           store: './src/store',
+          hooks: './src/hooks',
           config: './src/config',
           screens: './src/screens',
           routes: './src/routes',

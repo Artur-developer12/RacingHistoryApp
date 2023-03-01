@@ -4,7 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { ThemeProvider } from '@emotion/react'
 import theme from 'config/theme'
 import Routes from 'routes'
-import { store, persistor } from 'strore'
+import { store, persistor } from 'store'
 
 const App = (): JSX.Element => (
   <Provider store={store}>

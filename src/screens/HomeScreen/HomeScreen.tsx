@@ -1,7 +1,8 @@
 import { Text } from 'react-native'
 import React, { useEffect } from 'react'
 import styled from '@emotion/native'
-import { getDrivers } from 'clients/ergastApiClient'
+import { fetchDrivers } from 'store/slices/mainSlice'
+import useAppDispatch from 'hooks/useAppDispatch'
 
 const Wrapper = styled.View`
   flex: 1;
@@ -9,10 +10,9 @@ const Wrapper = styled.View`
 `
 
 const HomeScreen = () => {
+  const dispatch = useAppDispatch()
   useEffect(() => {
-    getDrivers()
-      .then(data => console.log('data', data))
-      .catch(e => console.log('e', e))
+    dispatch(fetchDrivers())
   }, [])
   return (
     <Wrapper>
